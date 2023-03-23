@@ -1,0 +1,59 @@
+public class ArrayOperations {
+    public static void main(String[] args) {
+        int[] arr = new int[15];
+        Scanner sc = new Scanner(System.in);
+
+     
+        System.out.println("Enter 15 integers:");
+        for (int i = 0; i < 15; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+       
+        System.out.println("Values stored in array:");
+        for (int i = 0; i < 15; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+
+       
+        System.out.println("Enter a number to search:");
+        int num = sc.nextInt();
+        boolean found = false;
+        for (int i = 0; i < 15; i++) {
+            if (arr[i] == num) {
+                System.out.println("The number found at index " + i);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("Number not found in this array");
+        }
+
+        
+        int[] reverseArr = new int[15];
+        for (int i = 0; i < 15; i++) {
+            reverseArr[i] = arr[14 - i];
+        }
+
+       
+        System.out.println("Values in reversed array:");
+        for (int i = 0; i < 15; i++) {
+            System.out.print(reverseArr[i] + " ");
+        }
+        System.out.println();
+
+        
+        int sum = 0;
+        int product = 1;
+        for (int i = 0; i < 15; i++) {
+            sum += arr[i];
+            product *= arr[i];
+        }
+        System.out.println("Sum of array elements: " + sum);
+        System.out.println("Product of array elements: " + product);
+
+        sc.close();
+    }
+}
