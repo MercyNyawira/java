@@ -1,0 +1,53 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class PalindromeChecker extends JFrame {
+    private JTextField inputField;
+    private JLabel resultLabel;
+
+    public PalindromeChecker() {
+        super("Palindrome Checker");
+
+        JPanel inputPanel = new JPanel(new FlowLayout());
+        inputPanel.add(new JLabel("Enter a number:"));
+        inputField = new JTextField(10);
+        inputPanel.add(inputField);
+
+        JButton checkButton = new JButton("Check");
+        checkButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String input = inputField.getText();
+                if (isPalindrome(input)) {
+                    resultLabel.setText(input + " is a palindrome.");
+                } else {
+                    resultLabel.setText(input + " is not a palindrome.");
+                }
+            }
+        });
+        inputPanel.add(checkButton);
+
+        resultLabel = new JLabel();
+        resultLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        Container contentPane = getContentPane();
+        contentPane.setLayout(new BorderLayout());
+        contentPane.add(inputPanel, BorderLayout.NORTH);
+        contentPane.add(resultLabel, BorderLayout.CENTER);
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+
+    public static boolean isPalindrome(String str) {
+        String reverseStr = new StringBuilder(str).reverse().toString();
+        return str.equals(reverseStr);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new PalindromeChecker();
+            }
